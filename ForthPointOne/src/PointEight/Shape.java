@@ -3,8 +3,8 @@ package PointEight;
 public abstract class Shape {
     protected String color;
     protected boolean filled;
-    abstract double getArea();
-    abstract double getPerimeter();
+    public abstract double getArea();
+    public abstract double getPerimeter();
 
     public Shape(String color, boolean filled) {
         this.color = color;

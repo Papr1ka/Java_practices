@@ -27,7 +27,7 @@ public class Circle extends Shape {
     }
 
     @Override
-    double getArea() {
+    public double getArea() {
         return this.radius * this.radius * Math.PI;
     }
 
