@@ -19,7 +19,7 @@ public class Circle extends Shape implements Comparable<Circle> {
     }
 
     @Override
-    double getArea() {
+    public double getArea() {
         return this.radius * this.radius * Math.PI;
     }
 
