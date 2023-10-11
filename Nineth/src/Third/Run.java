@@ -25,44 +25,41 @@ public class Run {
         };
         Run r = new Run();
         System.out.println("До:");
-        System.out.println(Arrays.toString(iDNumber));
-        r.quickSort(iDNumber, 0, iDNumber.length - 1);
+        System.out.println(Arrays.toString(first));
+        System.out.println(Arrays.toString(second));
+
+        Run.mergeSort(first, first[0]);
+        Run.mergeSort(second, second[0]);
+        Student[] students = new Student[first.length + second.length];
+        merge(first, second, students, first[0]);
+
         System.out.println("После:");
-        System.out.println(Arrays.toString(iDNumber));
-        mergeSortInner(first, second, )
-    }
-    public static int[] mergeSort(int[] sortArr) {
-        int[] buffer1 = Arrays.copyOf(sortArr, sortArr.length);
-        int[] buffer2 = new int[sortArr.length];
-        int[] result = mergeSortInner(buffer1, buffer2, 0, sortArr.length);
-        return result;
+        System.out.println(Arrays.toString(students));
     }
 
-    public static int[] mergeSortInner(int[] buffer1, int[] buffer2, int startIndex, int endIndex) {
-        if (startIndex >= endIndex - 1) {
-            return buffer1;
+    public static <K> void merge(K[] S1, K[] S2, K[] S, Comparator<K> comp) {
+        int i = 0, j = 0;
+        while (i + j < S.length) {
+            if (j == S2.length
+                    || (i < S1.length && comp.compare(S1[i], S2[j]) < 0))
+                S[i + j] = S1[i++]; // copy ith element of S1 and increment i
+            else
+                S[i + j] = S2[j++]; // copy jth element of S2 and increment j
         }
+    }
 
-        //уже отсортирован
-        int middle = startIndex + (endIndex - startIndex) / 2;
-        int[] sorted1 = mergeSortInner(buffer1, buffer2, startIndex, middle);
-        int[] sorted2 = mergeSortInner(buffer1, buffer2, middle, endIndex);
-
-        //слияние
-        int index1 = startIndex;
-        int index2 = middle;
-        int destIndex = startIndex;
-        int[] result = sorted1 == buffer1 ? buffer2 : buffer1;
-        while (index1 < middle && index2 < endIndex) {
-            result[destIndex++] = sorted1[index1] < sorted2[index2]
-                    ? sorted1[index1++] : sorted2[index2++];
-        }
-        while (index1 < middle) {
-            result[destIndex++] = sorted1[index1++];
-        }
-        while (index2 < endIndex) {
-            result[destIndex++] = sorted2[index2++];
-        }
-        return result;
+    public static <K> void mergeSort(K[] S, Comparator<K> comp) {
+        int n = S.length;
+        if (n < 2)
+            return; // array is trivially sorted
+        // divide
+        int mid = n / 2;
+        K[] S1 = Arrays.copyOfRange(S, 0, mid); // copy of first half
+        K[] S2 = Arrays.copyOfRange(S, mid, n); // copy of second half
+        // conquer (with recursion)
+        mergeSort(S1, comp); // sort copy of first half
+        mergeSort(S2, comp); // sort copy of second half
+        // merge results
+        merge(S1, S2, S, comp); // merge sorted halves back into original
     }
 }

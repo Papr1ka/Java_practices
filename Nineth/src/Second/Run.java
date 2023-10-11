@@ -23,14 +23,14 @@ public class Run {
         System.out.println(Arrays.toString(iDNumber));
     }
 
-    public void quickSort(Comparator[] array, int low, int high)
+    public void quickSort(Student[] array, int low, int high)
     {
         //завершить,если массив пуст или уже нечего делить
         if (array.length == 0 || low >= high) return;
 
         //выбираем опорный элемент
         int middle = low + (high - low) / 2;
-        Comparator border = array[middle];
+        Student border = array[middle];
 
         //разделияем на подмассивы и меняем местами
         int i = low, j = high;
@@ -38,7 +38,7 @@ public class Run {
             while (array[i].compare(array[i], border) < 0) i++;
             while (array[j].compare(array[j], border) > 0) j--;
             if (i <= j) {
-                Comparator swap = array[i];
+                Student swap = array[i];
                 array[i] = array[j];
                 array[j] = swap;
                 i++;
