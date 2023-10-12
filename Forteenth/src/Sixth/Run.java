@@ -15,7 +15,7 @@ public class Run {
     }
 
     public static boolean testRegex(String s){
-        Matcher m = Pattern.compile("([a-z0-9!#$%&'*+\\/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\w+@localhost)").matcher(s);
+        Matcher m = Pattern.compile("\\w+@(\\w+\\.\\w+|localhost)").matcher(s);
         return m.find() && m.group().equals(s);
     }
 }

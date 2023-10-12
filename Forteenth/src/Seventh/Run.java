@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Run {
     public static void main(String[] args) {
-        String[] test = new String[]{"F032_Password", "TrySpy1", "smart_pass", "A007"};
+        String[] test = new String[]{"F032_Password", "TrySpy1_", "smart_pass", "A007"};
         for (String i: test) {
             if (testRegex(i))
             {

@@ -29,13 +29,15 @@ public class Forth {
         ImageIcon image4 = new ImageIcon(getClass().getResource("./4.png"));
         ImageIcon image5 = new ImageIcon(getClass().getResource("./5.png"));
         ImageIcon image6 = new ImageIcon(getClass().getResource("./6.png"));
+        ImageIcon image7 = new ImageIcon(getClass().getResource("./7.png"));
+        ImageIcon image8 = new ImageIcon(getClass().getResource("./8.png"));
         JLabel label = new JLabel(image1);
         frame.add(label);
         frame.setVisible(true);
         Timer t = new Timer(100, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int c = Forth.i % 6;
+                int c = Forth.i % 8;
                 switch (c)
                 {
                     case 0:
@@ -56,6 +58,11 @@ public class Forth {
                     case 5:
                         label.setIcon(image6);
                         break;
+                    case 6:
+                        label.setIcon(image7);
+                        break;
+                    case 7:
+                        label.setIcon(image8);
                 }
                 Forth.i++;
             }

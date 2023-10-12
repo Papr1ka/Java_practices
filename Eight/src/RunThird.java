@@ -1,7 +1,7 @@
 public class RunThird {
     public static void main(String[] args) {
-        int a = 4;
-        int b = 10;
+        int a = 10;
+        int b = 3;
         RunThird r = new RunThird();
         r.print(a, b);
     }
